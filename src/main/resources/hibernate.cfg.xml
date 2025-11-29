@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Deklarasi XML standar -->
+<!DOCTYPE hibernate-configuration 
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- Elemen root konfigurasi Hibernate -->
+<hibernate-configuration>
+
+    <!-- Konfigurasi utama Hibernate -->
+    <session-factory>
+
+        <!-- === Pengaturan koneksi ke database === -->
+        
+        <!-- Driver JDBC yang digunakan untuk MySQL -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
+        <!-- URL koneksi ke database (nama database: pert4_50422421) -->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pert4_50422421</property>
+
+        <!-- Username database -->
+        <property name="hibernate.connection.username">root</property>
+
+        <!-- Password database (kosong berarti tanpa password) -->
+        <property name="hibernate.connection.password"></property>
+
+
+        <!-- === Pengaturan Connection Pool (c3p0) === -->
+        <!-- c3p0 adalah library untuk mengelola koneksi database agar efisien -->
+        <property name="hibernate.c3p0.min_size">5</property>        <!-- Jumlah koneksi minimum -->
+        <property name="hibernate.c3p0.max_size">20</property>       <!-- Jumlah koneksi maksimum -->
+        <property name="hibernate.c3p0.timeout">300</property>       <!-- Waktu tunggu (detik) sebelum koneksi idle ditutup -->
+        <property name="hibernate.c3p0.max_statements">50</property> <!-- Jumlah statement SQL yang disimpan di cache -->
+        <property name="hibernate.c3p0.idle_test_period">3000</property> <!-- Waktu (detik) antar pengecekan koneksi idle -->
+
+
+        <!-- === Pengaturan Hibernate === -->
+        <!-- Dialek MySQL agar Hibernate tahu cara menulis SQL sesuai MySQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Menampilkan semua perintah SQL yang dieksekusi di console -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Mengatur tindakan terhadap struktur tabel:
+             'update' = otomatis menyesuaikan tabel jika ada perubahan entity -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+
+        <!-- === Pemetaan class model ke tabel database === -->
+        <!-- Menghubungkan class ModelMahasiswa dengan tabel mahasiswa -->
+        <mapping class="com.mycompany.pert4_50422421.model.ModelMahasiswa"/>
+
+    </session-factory>
+</hibernate-configuration>

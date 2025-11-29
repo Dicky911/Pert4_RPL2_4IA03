@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Deklarasi XML standar dengan versi 1.0 dan encoding UTF-8 -->
+
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                        http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Tag utama untuk file konfigurasi Maven (Project Object Model - POM) -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Versi model POM yang digunakan oleh Maven -->
+
+    <groupId>com.mycompany</groupId>
+    <!-- groupId = identitas organisasi atau perusahaan pembuat project -->
+
+    <artifactId>pert4_50422421</artifactId>
+    <!-- artifactId = nama unik project (biasanya nama aplikasi) -->
+
+    <version>1.0-SNAPSHOT</version>
+    <!-- version = versi project. "SNAPSHOT" menandakan versi masih tahap pengembangan -->
+
+    <packaging>jar</packaging>
+    <!-- packaging = tipe hasil build project (jar, war, ear, dll) -->
+    
+    <properties>
+        <!-- Bagian ini menyimpan properti konfigurasi tambahan -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Menentukan encoding file sumber (UTF-8 agar mendukung karakter internasional) -->
+        
+        <maven.compiler.release>24</maven.compiler.release>
+        <!-- Menentukan versi Java yang digunakan untuk kompilasi (Java 24 dalam contoh ini) -->
+        
+        <exec.mainClass>com.mycompany.pert4_50422421.Pert4_50422421</exec.mainClass>
+        <!-- Menentukan kelas utama (main class) untuk dijalankan saat eksekusi -->
+    </properties>
+
+    <dependencies>
+        <!-- Bagian ini berisi daftar library eksternal yang digunakan project -->
+        
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.6.0.Final</version>
+        </dependency>
+        <!-- Menambahkan dependensi Hibernate Core versi 6.6.0 untuk ORM (Object Relational Mapping) -->
+
+        <!-- MySQL Connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+        <!-- Menambahkan driver MySQL agar Hibernate bisa terhubung ke database MySQL -->
+    </dependencies>
+
+    <build>
+        <!-- Bagian konfigurasi proses build -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- Menentukan lokasi folder resource (seperti file konfigurasi Hibernate, dll) -->
+                
+                <filtering>false</filtering>
+                <!-- filtering=false artinya tidak ada penggantian variabel dalam file resource -->
+            </resource>
+        </resources>
+    </build>
+
+</project>
